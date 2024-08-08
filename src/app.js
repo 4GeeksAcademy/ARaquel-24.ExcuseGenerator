@@ -7,11 +7,11 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   //write your code here
-  document.querySelector("#excuse").innerHTML = excusas();
+  document.querySelector("#excuse").innerHTML = generaExcuse();
   console.log("Hello Rigo from the console!");
 };
 
-function excusas() {
+function generaExcuse() {
   let who = ["The dog", "My grandma", "The mailman", "My bird"];
   let action = ["ate", "peed", "crushed", "broke"];
   let what = ["my homework", "my phone", "the car"];
@@ -22,11 +22,20 @@ function excusas() {
     "during my lunch",
     "while I was praying"
   ];
-  let quien = Math.floor(Math.random() * who.length);
-  let accion = Math.floor(Math.random() * action.length);
-  let que = Math.floor(Math.random() * what.length);
-  let donde = Math.floor(Math.random() * when.length);
-  return (
-    who[quien] + " " + action[accion] + " " + what[que] + " " + when[donde]
-  );
+
+  function wordRandom(verb) {
+    let index = Math.floor(Math.random() * verb.length);
+    return verb[index];
+  }
+
+  let excuse =
+    wordRandom(who) +
+    " " +
+    wordRandom(action) +
+    " " +
+    wordRandom(what) +
+    " " +
+    wordRandom(when) +
+    " ";
+  return excuse;
 }
